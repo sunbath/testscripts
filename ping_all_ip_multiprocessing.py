@@ -31,7 +31,8 @@ def ping(addr):
         arp_output = subprocess.Popen(['arp', '-n', str(addr)], stdout=subprocess.PIPE).communicate()[0]
         p = re.compile('([0-9a-fA-F]{1,2}(:|-)){5}([0-9a-fA-F]{1,2})')
         mac = re.search(p,str(arp_output))
-        return "Online" , mac.group(0)
+        MAC_Address = mac.group(0)
+        return "Online" , MAC_Address
 
 def print_result(addr,ping_result,arp,hostname):
     # Function to print out the IP address, Ping Result, MAC Address and its hostname (one line at a time)
